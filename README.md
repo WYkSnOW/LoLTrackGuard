@@ -115,7 +115,7 @@ Used `FakeDataGenerator.py` to generate over **70,000 labeled synthetic images**
 
 These noisy but labeled images were then used to train a **YOLOv8-based object detection model** capable of detecting mouse positions in real gameplay videos.
 
-[cursor detection example](utils/img/1.png)
+![cursor detection example](utils/img/1.png)
 ---
 
 ### 2. Behavioral Modeling via LSTM Autoencoder
@@ -124,7 +124,7 @@ To avoid subjective judgment in identifying cheaters, use an **LSTM autoencoder*
 
 The model learns to reconstruct **normal human mouse movement patterns**. During inference, it flags any sequences with high **reconstruction error** as potential anomalies, without requiring manual rule definitions.
 
-[LSTM](utils/img/2.png)
+![LSTM](utils/img/2.png)
 
 ---
 
@@ -157,6 +157,6 @@ This allows for quantitative, objective evaluation of suspicious gameplay behavi
 
 The results are saved to `analysis_results/` as CSV files, where each row corresponds to one detected action with its associated anomaly score.
 
-[Pro Player Data (Unseen During Training](utils/img/3.png)
-[Regular Player Data](utils/img/4.png)
-[Suspicious Gameplay Data](utils/img/5.png)
+![Pro Player Data (Unseen During Training](utils/img/3.png)
+![Regular Player Data](utils/img/4.png)
+![Suspicious Gameplay Data](utils/img/5.png)
