@@ -1,0 +1,23 @@
+import os
+from pipeline import cursorDetector, analyzer
+
+print("=== Step 1: Detect cursor from video ===")
+
+os.makedirs('mouse_positions', exist_ok=True)
+os.makedirs('material_for_analysis', exist_ok=True)
+
+model_path = 'utils/cursorDetector_x.pt'
+record_video = input("Do you want the boxed videos? (y/n): ").lower() == 'y'
+record_csv = input("Do you want the mouse positions? (y/n): ").lower() == 'y'
+selected_videos = cursorDetector.select_files()
+cursorDetector.process_videos(model_path, record_video, record_csv, selected_videos)
+
+print("=== Step 2: Analyze mouse behavior ===")
+
+os.makedirs('analysis_results', exist_ok=True)
+
+for filename in os.listdir('material_for_analysis'):
+    if filename.endswith('.csv'):
+        analyzer.analyze_single_csv(filename)
+
+print("✅ Analysis pipeline complete.")
